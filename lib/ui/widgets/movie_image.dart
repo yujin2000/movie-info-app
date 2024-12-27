@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 
 class MovieImage extends StatelessWidget {
-  MovieImage(this.url);
+  MovieImage({
+    required this.url,
+    required this.height,
+    required this.width,
+  });
+
   String url;
+  double height;
+  double width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 180,
-      width: 130,
+      height: height,
+      width: width,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Image.network(

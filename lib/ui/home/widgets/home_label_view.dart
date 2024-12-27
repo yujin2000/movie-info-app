@@ -53,10 +53,10 @@ class HomeLabelView extends StatelessWidget {
                     if (index == 0) {
                       return Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: MovieImage(url),
+                        child: MovieImage(url: url, height: 180, width: 130),
                       );
                     }
-                    return MovieImage(url);
+                    return MovieImage(url: url, height: 180, width: 130);
                   },
                 ),
         ),
@@ -73,7 +73,7 @@ class HomeLabelView extends StatelessWidget {
         children: [
           Positioned(
             left: 35,
-            child: MovieImage(url),
+            child: MovieImage(url: url, height: 180, width: 130),
           ),
           Positioned(
             bottom: 10,
