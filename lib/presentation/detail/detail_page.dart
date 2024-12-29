@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/ui/detail/widgets/detail_box_office_info.dart';
-import 'package:movie_info_app/ui/detail/widgets/detail_category.dart';
-import 'package:movie_info_app/ui/detail/widgets/detail_production_company.dart';
-import 'package:movie_info_app/ui/detail/widgets/detail_summary.dart';
-import 'package:movie_info_app/ui/widgets/movie_image.dart';
+import 'package:movie_info_app/presentation/detail/widgets/detail_box_office_info.dart';
+import 'package:movie_info_app/presentation/detail/widgets/detail_category.dart';
+import 'package:movie_info_app/presentation/detail/widgets/detail_production_company.dart';
+import 'package:movie_info_app/presentation/detail/widgets/detail_summary.dart';
+import 'package:movie_info_app/presentation/widgets/movie_image.dart';
 
 class DetailPage extends StatelessWidget {
   List<String> category = ['Animation', 'Adventure', 'Family', 'Comedy'];

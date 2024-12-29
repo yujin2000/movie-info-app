@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/ui/home/widgets/home_label_view.dart';
-import 'package:movie_info_app/ui/home/widgets/home_main_view.dart';
+import 'package:movie_info_app/presentation/home/widgets/home_label_view.dart';
+import 'package:movie_info_app/presentation/home/widgets/home_main_view.dart';
 
 class HomePage extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/ui/widgets/movie_image.dart';
+import 'package:movie_info_app/presentation/widgets/movie_image.dart';
 
 class HomeLabelView extends StatelessWidget {
   HomeLabelView({required this.label, this.isRank = false});

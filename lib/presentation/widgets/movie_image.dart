@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_info_app/ui/detail/detail_page.dart';
+import 'package:movie_info_app/presentation/detail/detail_page.dart';
 
 class MovieImage extends StatelessWidget {
   MovieImage({
