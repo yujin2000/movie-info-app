@@ -1,6 +1,6 @@
 class Movie {
   final int id;
-  final String poseterPath;
+  final String posterPath;
 
-  Movie({required this.id, required this.poseterPath});
+  Movie({required this.id, required this.posterPath});
 }

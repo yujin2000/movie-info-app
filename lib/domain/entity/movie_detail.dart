@@ -27,16 +27,16 @@ class MovieDetail {
   final String overview;
 
   /// 평점
-  final String voteAverage;
+  final double voteAverage;
 
   /// 평점 투표수
-  final String voteCount;
+  final int voteCount;
 
   /// 인기 점수
   final double popularity;
 
   /// 수익
-  final double revenue;
+  final int revenue;
 
   /// 제작사
   final List<ProductionCompany> productionCompanies;
