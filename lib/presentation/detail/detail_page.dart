@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movie_info_app/domain/entity/movie.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_box_office_info.dart';
-import 'package:movie_info_app/presentation/detail/widgets/detail_category.dart';
+import 'package:movie_info_app/presentation/detail/widgets/detail_genre.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_production_company.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_summary.dart';
-import 'package:movie_info_app/presentation/widgets/movie_image.dart';
 
 class DetailPage extends StatelessWidget {
   List<String> category = ['Animation', 'Adventure', 'Family', 'Comedy'];
@@ -18,16 +18,30 @@ class DetailPage extends StatelessWidget {
     'https://picsum.photos/200/300',
     'https://picsum.photos/200/300'
   ];
+
+  Movie movie;
+  String heroTag;
+  DetailPage(this.movie, this.heroTag);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
           // 영화 이미지
-          MovieImage(
-            url: 'https://picsum.photos/200/300',
-            height: 620,
-            width: double.infinity,
+          Hero(
+            tag: heroTag,
+            child: SizedBox(
+              height: 620,
+              width: double.infinity,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  movie.posterPath,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
           ),
 
           // 영화 요약 소개
@@ -35,7 +49,7 @@ class DetailPage extends StatelessWidget {
           const Divider(height: 1),
 
           // 카테고리
-          DetailCategory(category),
+          DetailGenre(category),
           const Divider(height: 1),
 
           // 영화 내용

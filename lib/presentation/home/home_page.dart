@@ -11,6 +11,7 @@ class HomePage extends StatelessWidget {
       body: Consumer(builder: (context, ref, child) {
         final movieData = ref.watch(homeViewModelProvider);
 
+        // TODO: 데이터 가져올 시간을 표시하는 CircularProgressIndicator 있으면 좋을 듯
         return ListView(
           children: [
             HomeMainView(movieData!.popularMovies.first),

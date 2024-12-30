@@ -22,7 +22,7 @@ class HomeMainView extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           MovieImage(
-            url: movie.posterPath,
+            movie: movie,
             height: 550,
             width: double.infinity,
           ),

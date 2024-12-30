@@ -32,7 +32,6 @@ class HomeState {
 class HomeViewModel extends Notifier<HomeState?> {
   @override
   HomeState? build() {
-    print('HomeViewModel build!!!');
     fetchMovies();
     return null;
   }
