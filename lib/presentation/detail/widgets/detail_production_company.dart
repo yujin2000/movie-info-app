@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:movie_info_app/domain/entity/production_company.dart';
 
 class DetailProductionCompany extends StatelessWidget {
-  DetailProductionCompany(this.imageUrls);
-  List<String> imageUrls;
+  DetailProductionCompany(this.productCompanies);
+  List<ProductionCompany> productCompanies;
 
   @override
   Widget build(BuildContext context) {
@@ -10,13 +11,13 @@ class DetailProductionCompany extends StatelessWidget {
       height: 80,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: imageUrls.length,
+        itemCount: productCompanies.length,
         separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
           return SizedBox(
             width: 140,
             child: Image.network(
-              imageUrls[index],
+              productCompanies[index].logoPath!,
               fit: BoxFit.cover,
             ),
           );

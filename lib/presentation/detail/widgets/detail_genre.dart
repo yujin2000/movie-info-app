@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:movie_info_app/domain/entity/genre.dart';
 
 class DetailGenre extends StatelessWidget {
-  DetailGenre(this.genre);
-  List<Genre> genre;
+  DetailGenre(this.genres);
+  List<Genre> genres;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class DetailGenre extends StatelessWidget {
         height: 35,
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
-          itemCount: genre.length,
+          itemCount: genres.length,
           separatorBuilder: (context, index) => const SizedBox(width: 5),
           itemBuilder: (context, index) {
             return TextButton(
@@ -21,7 +21,7 @@ class DetailGenre extends StatelessWidget {
               onPressed: null,
               style: Theme.of(context).textButtonTheme.style,
               child: Text(
-                genre[index].name,
+                genres[index].name,
                 style: const TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,

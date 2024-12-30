@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movie_info_app/domain/entity/movie.dart';
+import 'package:movie_info_app/presentation/detail/detail_view_model.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_box_office_info.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_genre.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_production_company.dart';
@@ -26,61 +28,64 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          // 영화 이미지
-          Hero(
-            tag: heroTag,
-            child: SizedBox(
-              height: 620,
-              width: double.infinity,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  movie.posterPath,
-                  fit: BoxFit.fill,
+      body: Consumer(builder: (context, ref, child) {
+        final movieDetail = ref.watch(detailViewModelProvider(movie.id));
+
+        return ListView(
+          children: [
+            // 영화 이미지
+            Hero(
+              tag: heroTag,
+              child: SizedBox(
+                height: 620,
+                width: double.infinity,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    movie.posterPath,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
-          ),
 
-          // 영화 요약 소개
-          DetailSummary(),
-          const Divider(height: 1),
+            // 영화 요약 소개
+            DetailSummary(movieDetail!),
+            const Divider(height: 1),
 
-          // 카테고리
-          DetailGenre(category),
-          const Divider(height: 1),
+            // 카테고리
+            DetailGenre(movieDetail.genres),
+            const Divider(height: 1),
 
-          // 영화 내용
-          Container(
-            width: double.infinity,
-            margin: const EdgeInsets.symmetric(vertical: 10),
-            child: Text(
-                '선조들로부터 예기치 못한 부름을 받은 ‘모아나’가 부족의 파괴를 막기 위해 전설 속 영웅 ‘마우이’와 새로운 선원들과 함께 숨겨진 고대 섬의 저주를 깨러 떠나는 위험천만한 모험을 담은 스펙터클 오션 어드벤처'),
-          ),
-          const Divider(height: 1),
+            // 영화 내용
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              child: Text(movieDetail.overview),
+            ),
+            const Divider(height: 1),
 
-          // 영화 흥행정보
-          const Padding(
-            padding: EdgeInsets.symmetric(vertical: 15.0),
-            child: Text(
-              '흥행정보',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            // 영화 흥행정보
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 15.0),
+              child: Text(
+                '흥행정보',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
-          DetailBoxOfficeInfo(info),
-          const SizedBox(height: 25),
+            DetailBoxOfficeInfo(movieDetail),
+            const SizedBox(height: 25),
 
-          // 영화 제작사
-          DetailProductionCompany(imageUrls),
-          // 공백
-          const SizedBox(height: 15),
-        ],
-      ),
+            // 영화 제작사
+            DetailProductionCompany(movieDetail.productionCompanies),
+            // 공백
+            const SizedBox(height: 15),
+          ],
+        );
+      }),
     );
   }
 }
