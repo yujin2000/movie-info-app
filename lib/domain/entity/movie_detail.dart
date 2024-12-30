@@ -35,6 +35,9 @@ class MovieDetail {
   /// 인기 점수
   final double popularity;
 
+  /// 예산
+  final int budget;
+
   /// 수익
   final int revenue;
 
@@ -53,6 +56,7 @@ class MovieDetail {
     required this.voteAverage,
     required this.voteCount,
     required this.popularity,
+    required this.budget,
     required this.revenue,
     required this.productionCompanies,
   });

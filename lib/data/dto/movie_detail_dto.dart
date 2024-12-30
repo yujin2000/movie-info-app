@@ -36,6 +36,9 @@ class MovieDetailDto {
   /// 인기 점수
   final double popularity;
 
+  /// 예산
+  final int budget;
+
   /// 수익
   final int revenue;
 
@@ -54,6 +57,7 @@ class MovieDetailDto {
     required this.voteAverage,
     required this.voteCount,
     required this.popularity,
+    required this.budget,
     required this.revenue,
     required this.productionCompanies,
   });
@@ -73,6 +77,7 @@ class MovieDetailDto {
           voteAverage: map['vote_average'],
           voteCount: map['vote_count'],
           popularity: map['popularity'],
+          budget: map['budget'],
           revenue: map['revenue'],
           productionCompanies: List.from(map['production_companies'])
               .map((e) => ProductionCompanyDto.fromJson(e))
@@ -92,6 +97,7 @@ class MovieDetailDto {
       'voteAverage': voteAverage,
       'voteCount': voteCount,
       'popularity': popularity,
+      'budget': budget,
       'revenue': revenue,
       'productionCompanies':
           productionCompanies.map((e) => e.toJson()).toList(),

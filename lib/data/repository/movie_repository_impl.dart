@@ -25,6 +25,7 @@ class MovieRepositoryImpl implements MovieRepository {
         voteAverage: dm.voteAverage,
         voteCount: dm.voteCount,
         popularity: dm.popularity,
+        budget: dm.budget,
         revenue: dm.revenue,
         productionCompanies: dm.productionCompanies
             .map((e) =>
