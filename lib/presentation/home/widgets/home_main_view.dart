@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movie_info_app/domain/entity/movie.dart';
 import 'package:movie_info_app/presentation/widgets/movie_image.dart';
 
 class HomeMainView extends StatelessWidget {
+  HomeMainView(this.movie);
+  final Movie movie;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,7 +22,7 @@ class HomeMainView extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           MovieImage(
-            url: 'https://picsum.photos/200/300',
+            url: movie.posterPath,
             height: 550,
             width: double.infinity,
           ),

@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:movie_info_app/domain/entity/movie.dart';
 import 'package:movie_info_app/presentation/widgets/movie_image.dart';
 
 class HomeLabelView extends StatelessWidget {
-  HomeLabelView({required this.label, this.isRank = false});
+  HomeLabelView({
+    required this.label,
+    this.isRank = false,
+    required this.movies,
+  });
 
-  String url = 'https://picsum.photos/200/300';
   String label;
   late bool isRank;
+  List<Movie> movies;
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +42,12 @@ class HomeLabelView extends StatelessWidget {
                     if (index == 0) {
                       return Padding(
                         padding: const EdgeInsets.only(left: 10),
-                        child: rankMovieImage((index + 1).toString()),
+                        child: rankMovieImage(
+                            (index + 1).toString(), movies[index]),
                       );
                     }
-                    return rankMovieImage((index + 1).toString());
+                    return rankMovieImage(
+                        (index + 1).toString(), movies[index]);
                   },
                 )
               // 인기순 외의 영화
@@ -53,10 +60,14 @@ class HomeLabelView extends StatelessWidget {
                     if (index == 0) {
                       return Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: MovieImage(url: url, height: 180, width: 130),
+                        child: MovieImage(
+                            url: movies[index].posterPath,
+                            height: 180,
+                            width: 130),
                       );
                     }
-                    return MovieImage(url: url, height: 180, width: 130);
+                    return MovieImage(
+                        url: movies[index].posterPath, height: 180, width: 130);
                   },
                 ),
         ),
@@ -65,7 +76,7 @@ class HomeLabelView extends StatelessWidget {
   }
 
   /// 인기순 용 영화 이미지
-  Widget rankMovieImage(String rank) {
+  Widget rankMovieImage(String rank, Movie movie) {
     return SizedBox(
       width: 165,
       height: 180,
@@ -73,7 +84,7 @@ class HomeLabelView extends StatelessWidget {
         children: [
           Positioned(
             left: 35,
-            child: MovieImage(url: url, height: 180, width: 130),
+            child: MovieImage(url: movie.posterPath, height: 180, width: 130),
           ),
           Positioned(
             bottom: 10,

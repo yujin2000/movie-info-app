@@ -1,3 +1,5 @@
+import 'package:movie_info_app/util/tmdb.dart';
+
 class ProductionCompanyDto {
   final int id;
   final String? logoPath;
@@ -12,7 +14,7 @@ class ProductionCompanyDto {
   ProductionCompanyDto.fromJson(Map<String, dynamic> map)
       : this(
           id: map['id'],
-          logoPath: map['logo_path'],
+          logoPath: '${Tmdb.posterImagePrePath}${map['logo_path']}',
           name: map['name'],
         );
 

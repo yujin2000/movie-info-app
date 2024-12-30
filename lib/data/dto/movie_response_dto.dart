@@ -1,3 +1,5 @@
+import 'package:movie_info_app/util/tmdb.dart';
+
 class MovieResponseDto {
   final int id;
   final String posterPath;
@@ -7,7 +9,7 @@ class MovieResponseDto {
   MovieResponseDto.fromJson(Map<String, dynamic> map)
       : this(
           id: map['id'],
-          posterPath: map['poster_path'],
+          posterPath: '${Tmdb.posterImagePrePath}${map['poster_path']}',
         );
 
   Map<String, dynamic> toJson() {

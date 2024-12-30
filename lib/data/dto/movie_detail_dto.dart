@@ -1,5 +1,6 @@
 import 'package:movie_info_app/data/dto/genre_dto.dart';
 import 'package:movie_info_app/data/dto/production_company_dto.dart';
+import 'package:movie_info_app/util/tmdb.dart';
 
 class MovieDetailDto {
   /// 영화 아이디
@@ -60,7 +61,7 @@ class MovieDetailDto {
   MovieDetailDto.fromJson(Map<String, dynamic> map)
       : this(
           id: map['id'],
-          posterPath: map['poster_path'],
+          posterPath: '${Tmdb.posterImagePrePath}${map['poster_path']}',
           title: map['title'],
           releaseDate: map['release_date'],
           tagline: map['tagline'],
