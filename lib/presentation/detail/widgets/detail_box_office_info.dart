@@ -17,6 +17,7 @@ class DetailBoxOfficeInfo extends StatelessWidget {
     return SizedBox(
       height: 80,
       child: ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         scrollDirection: Axis.horizontal,
         itemCount: info.length,
         separatorBuilder: (context, index) => const SizedBox(width: 10),

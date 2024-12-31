@@ -38,23 +38,32 @@ class DetailPage extends StatelessWidget {
 
             // 영화 요약 소개
             DetailSummary(movieDetail!),
-            const Divider(height: 1),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Divider(height: 1),
+            ),
 
             // 카테고리
             DetailGenre(movieDetail.genres),
-            const Divider(height: 1),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Divider(height: 1),
+            ),
 
             // 영화 내용
             Container(
               width: double.infinity,
-              margin: const EdgeInsets.symmetric(vertical: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Text(movieDetail.overview),
             ),
-            const Divider(height: 1),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Divider(height: 1),
+            ),
 
             // 영화 흥행정보
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 15.0),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
               child: Text(
                 '흥행정보',
                 style: TextStyle(

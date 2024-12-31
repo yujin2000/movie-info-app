@@ -11,6 +11,7 @@ class DetailProductionCompany extends StatelessWidget {
       height: 80,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         itemCount: productCompanies.length,
         separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
