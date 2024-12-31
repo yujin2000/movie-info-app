@@ -8,19 +8,6 @@ import 'package:movie_info_app/presentation/detail/widgets/detail_production_com
 import 'package:movie_info_app/presentation/detail/widgets/detail_summary.dart';
 
 class DetailPage extends StatelessWidget {
-  List<String> category = ['Animation', 'Adventure', 'Family', 'Comedy'];
-  List<String> info = [
-    '6.949\n평점',
-    '331\n평점투표수',
-    '5466.536\n인기점수',
-    '\$150000000\n예산'
-  ];
-  List<String> imageUrls = [
-    'https://picsum.photos/200/300',
-    'https://picsum.photos/200/300',
-    'https://picsum.photos/200/300'
-  ];
-
   Movie movie;
   String heroTag;
   DetailPage(this.movie, this.heroTag);

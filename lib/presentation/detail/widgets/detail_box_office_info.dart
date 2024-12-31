@@ -11,8 +11,8 @@ class DetailBoxOfficeInfo extends StatelessWidget {
       '${md.voteAverage}\n평점',
       '${md.voteCount}\n평점투표수',
       '${md.popularity}\n인기점수',
-      '${md.budget}\n예산',
-      '${md.revenue}\n수익',
+      '\$${md.budget}\n예산',
+      '\$${md.revenue}\n수익',
     ];
     return SizedBox(
       height: 80,
