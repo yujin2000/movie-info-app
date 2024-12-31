@@ -36,6 +36,7 @@ void main() {
         voteAverage: 0.0,
         voteCount: 123,
         popularity: 0.0,
+        budget: 123,
         revenue: 123,
         productionCompanies: [
           ProductionCompany(id: id, logoPath: 'logoPath', name: 'name')

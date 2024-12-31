@@ -36,6 +36,7 @@ void main() {
         voteCount: 123,
         popularity: 0.0,
         revenue: 123,
+        budget: 123,
         productionCompanies: [
           ProductionCompanyDto(id: id, logoPath: 'logoPath', name: 'name')
         ],
