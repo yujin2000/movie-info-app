@@ -12,10 +12,8 @@ class MovieDataSourceImpl implements MovieDataSource {
     ),
   );
 
-  final String api = const String.fromEnvironment("TMDB_API_KEY",
+  final String API_KEY = const String.fromEnvironment("TMDB_API_KEY",
       defaultValue: 'default Value');
-
-  final String API_KEY = '4929957297e7a898237f95356f039a56';
 
   @override
   Future<MovieDetailDto?> fetchDetailMovie(int id) async {
