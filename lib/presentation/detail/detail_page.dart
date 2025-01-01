@@ -15,77 +15,87 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Consumer(builder: (context, ref, child) {
-        final movieDetail = ref.watch(detailViewModelProvider(movie.id));
+      body: ListView(
+        children: [
+          // 영화 이미지
+          Hero(
+            tag: heroTag,
+            child: SizedBox(
+              height: 620,
+              width: double.infinity,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(
+                  movie.posterPath,
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),
+          ),
 
-        return movieDetail == null
-            ? const Center(child: CircularProgressIndicator())
-            : ListView(
-                children: [
-                  // 영화 이미지
-                  Hero(
-                    tag: heroTag,
-                    child: SizedBox(
-                      height: 620,
-                      width: double.infinity,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.network(
-                          movie.posterPath,
-                          fit: BoxFit.fill,
+          Consumer(
+            builder: (context, ref, child) {
+              final movieDetail = ref.watch(detailViewModelProvider(movie.id));
+              return movieDetail == null
+                  ? const Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: Center(child: CircularProgressIndicator()),
+                    )
+                  // hero 애니메이션이 Consumer 위젯 안에 있을 경우 애니메이션 동작이 제대로 안되는 문제가 있어서 분리함
+                  : Column(
+                      children: [
+                        // 영화 요약 소개
+                        DetailSummary(movieDetail),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Divider(height: 1),
                         ),
-                      ),
-                    ),
-                  ),
 
-                  // 영화 요약 소개
-                  DetailSummary(movieDetail!),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Divider(height: 1),
-                  ),
+                        // 카테고리
+                        DetailGenre(movieDetail.genres),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Divider(height: 1),
+                        ),
 
-                  // 카테고리
-                  DetailGenre(movieDetail.genres),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Divider(height: 1),
-                  ),
+                        // 영화 내용
+                        Container(
+                          width: double.infinity,
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
+                          child: Text(movieDetail.overview),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 15),
+                          child: Divider(height: 1),
+                        ),
 
-                  // 영화 내용
-                  Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 10),
-                    child: Text(movieDetail.overview),
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15),
-                    child: Divider(height: 1),
-                  ),
+                        // 영화 흥행정보
+                        const Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 15.0),
+                          child: Text(
+                            '흥행정보',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        DetailBoxOfficeInfo(movieDetail),
+                        const SizedBox(height: 25),
 
-                  // 영화 흥행정보
-                  const Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 15, vertical: 15.0),
-                    child: Text(
-                      '흥행정보',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  DetailBoxOfficeInfo(movieDetail),
-                  const SizedBox(height: 25),
-
-                  // 영화 제작사
-                  DetailProductionCompany(movieDetail.productionCompanies),
-                  // 공백
-                  const SizedBox(height: 15),
-                ],
-              );
-      }),
+                        // 영화 제작사
+                        DetailProductionCompany(
+                            movieDetail.productionCompanies),
+                        // 공백
+                        const SizedBox(height: 15),
+                      ],
+                    );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
