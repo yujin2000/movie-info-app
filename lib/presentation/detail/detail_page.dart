@@ -37,6 +37,7 @@ class DetailPage extends StatelessWidget {
           Consumer(
             builder: (context, ref, child) {
               final movieDetail = ref.watch(detailViewModelProvider(movie.id));
+              // movieDetail 정보가 fetch 되기 전에는 CircularProgressIndicator 보여주어 null 값 처리
               return movieDetail == null
                   ? const Padding(
                       padding: EdgeInsets.only(top: 20.0),
@@ -48,24 +49,15 @@ class DetailPage extends StatelessWidget {
                       children: [
                         // 영화 요약 소개
                         DetailSummary(movieDetail),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Divider(height: 1),
-                        ),
+                        divider(),
 
                         // 카테고리
                         DetailGenre(movieDetail.genres),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Divider(height: 1),
-                        ),
+                        divider(),
 
                         // 영화 내용
                         DetailOverview(movieDetail.overview),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 15),
-                          child: Divider(height: 1),
-                        ),
+                        divider(),
 
                         // 영화 흥행정보
                         const Padding(
@@ -93,6 +85,13 @@ class DetailPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget divider() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 15),
+      child: Divider(height: 1),
     );
   }
 }

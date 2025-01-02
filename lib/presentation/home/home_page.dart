@@ -11,11 +11,12 @@ class HomePage extends StatelessWidget {
       body: Consumer(builder: (context, ref, child) {
         var movieData = ref.watch(homeViewModelProvider);
 
+        // movie 정보가 fetch 되기 전에는 CircularProgressIndicator 보여주어 null 값 처리
         return movieData == null
             ? const Center(child: CircularProgressIndicator())
             : ListView(
                 children: [
-                  HomeMainView(movieData!.popularMovies.first),
+                  HomeMainView(movieData.popularMovies.first),
                   const SizedBox(height: 10),
                   HomeLabelView(
                     label: '현재 상영중',
