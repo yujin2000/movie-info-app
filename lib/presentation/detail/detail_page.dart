@@ -4,6 +4,7 @@ import 'package:movie_info_app/domain/entity/movie.dart';
 import 'package:movie_info_app/presentation/detail/detail_view_model.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_box_office_info.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_genre.dart';
+import 'package:movie_info_app/presentation/detail/widgets/detail_overview.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_production_company.dart';
 import 'package:movie_info_app/presentation/detail/widgets/detail_summary.dart';
 
@@ -60,12 +61,7 @@ class DetailPage extends StatelessWidget {
                         ),
 
                         // 영화 내용
-                        Container(
-                          width: double.infinity,
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 10),
-                          child: Text(movieDetail.overview),
-                        ),
+                        DetailOverview(movieDetail.overview),
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 15),
                           child: Divider(height: 1),
