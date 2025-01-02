@@ -43,6 +43,7 @@ class DetailPage extends StatelessWidget {
                     )
                   // hero 애니메이션이 Consumer 위젯 안에 있을 경우 애니메이션 동작이 제대로 안되는 문제가 있어서 분리함
                   : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         // 영화 요약 소개
                         DetailSummary(movieDetail),
